@@ -113,7 +113,7 @@ export default function Home() {
     <main className=" text-white w-full">
       <div className='h-[100vh] w-full' >
         <div className='h-[500px] flex justify-center items-center w-[70%] mx-auto'>
-        Hey guys! I'm so happy the first installment of this series (Where to Apply Eyeshadow) was so well received! Thank you all for your support! 😀
+        Hey guys! so happy the first installment of this series (Where to Apply Eyeshadow) was so well received! Thank you all for your support! 😀
 
 In the second installment of the Eyeshadow Tutorials for Asian Eyes series, we discuss the Vertical Gradient Method of eyeshadow application.
 
