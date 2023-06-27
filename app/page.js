@@ -14,8 +14,11 @@ const sections = [
 ]
 
 
+
 export default function Home() {
+
   
+  const container = useRef(null)
   gsap.registerPlugin(ScrollTrigger)
 
   useEffect(() => {
