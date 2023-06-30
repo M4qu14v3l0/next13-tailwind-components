@@ -1,7 +1,9 @@
 'use client'
 import Image from 'next/image'
+import { useEffect, useState , useRef } from 'react' 
+import Atropos from 'atropos/react';
+import 'atropos/css'
 import { gsap } from "gsap"
-import { useEffect } from 'react' 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 
@@ -17,76 +19,43 @@ const sections = [
 
 export default function Home() {
 
+
+  let boxOfBoxes = useRef(null)
+  let generalContainer = useRef(null)
+
+  const [ bgState , setBgState ] = useState(true);
+  const [ opacity , setOpacity ] = useState(false);
+
+
   gsap.registerPlugin(ScrollTrigger)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-  
-    
-    //   const animateIn = () => {
-    //   gsap.to('.box' , { opacity: 1, y:0 })
-    //   setIsVisible(true)
-    // }
-
-    // const animateOut = () => {
-    //   gsap.to('.box' , {opacity:0 , y:200 , duration:2})
-    // }
-
-    // ScrollTrigger.create({
-    //   trigger: '.generalContainer',
-    //   start: 'top center',
-    //   end: 'bottom center',
-    //   toggleActions: 'restart pause reverse none',
-    //   scrub: true,
-    //   onEnter: animateIn,
-    //   onLeave: animateOut,
-    //   onEnterBack: animateIn,
-    //   onLeaveBack: animateOut,
-    //   markers:true,
-    // });
-
       let tl = gsap.timeline({
         paused: true,
         reversed: true,
         defaults: {ease: 'ease'},
         scrollTrigger: {
-          trigger: '.generalContainer',
-          start: 'top center',
-          end: '+=700',
-          scrub:1,
+          trigger: generalContainer.current,
+          start: 'top',
+          end: '+=1500',
+          scrub:0.6,
           markers: {
             startColor: 'yellow',
             endColor: 'yellow'
           }
         }
       })
+
       tl
-      .from('.box' , {opacity:0 , y:100 , duration:0.5})
-      .to('.box', {opacity: 0 , y:0 , duration:0.5})
-
-      let tl2 = gsap.timeline({
-        paused: true,
-        reversed: true,
-        defaults: {ease: 'ease'},
-        scrollTrigger: {
-          trigger: '.generalContainer',
-          start:'+=700 center',
-          end: '+=700 ',
-          scrub:1,
-          markers: {
-            startColor: 'pink',
-            endColor: 'pink'
-          }
-        }
-      })
-      tl2
-      .from('.box2' , {opacity:0 , y:100 , duration:0.5})
-      .to('.box2', {opacity: 0 , y:0 , duration:0.5})
-
+      .fromTo(boxOfBoxes.current , {opacity:0 , duration:1} , {opacity: 1, duration:1.5, onStart: () => setOpacity(true)}) 
+      .fromTo(boxOfBoxes.current , {opacity:1 , duration:1} , {opacity: 0, duration:1.5 , onComplete: () => setBgState(false)}) 
+      .fromTo(boxOfBoxes.current , {opacity:0 , duration:1} , {opacity: 1 , duration:1.5 , onReverseComplete: () => setBgState(true)})
+      .fromTo(boxOfBoxes.current , {opacity:1 , duration:1} , {opacity: 0 , duration:1.5})
 
 
       ScrollTrigger.create({
-        trigger: '.generalContainer',
+        trigger: generalContainer.current ,
         pin: true,
         pinSpacer: false,
         pinSpacing: false,
@@ -119,25 +88,27 @@ While there are no rules when it comes to makeup, the Vertical Gradient Method i
 
 The Vertical Gradient Method is basically dividing the lid horizontally, most commonly into 3 sections and with the darkest color placed nearest to the eyelashes.
         </div>
-        <div className='generalContainer  relative h-[1500px] w-full'>
-          <div className='absolute h-full w-full flex flex-col gap-5'>
-            {
-              sections.map(item => (
-                <div className={`h-32 w-[70%] mx-auto ${item.bg} box relative bg-eyes bg-no-repeat bg-cover bg-[center_top_-200px]`} key={item.value}>
-                </div >
-              ))
-            }
-          </div>
-          <div className='absolute h-full w-full flex flex-col gap-5'>
-            {
-              sections.map(item => (
-                <div className={`h-32 w-[70%] mx-auto ${item.bg2} box2 relative bg-eyes`} key={item.value}>
-                </div>
-              ))
-            }
+        <div className='relative h-[1500px] w-full' ref={generalContainer}>
+          <div className='absolute h-full w-full pt-[40px]'>
+            <Atropos 
+              className="w-[95%] h-[70%] mx-auto"
+              rotateXMax={5}
+              rotateYMax={5}
+              highlight={false}
+              duration={300}
+              >
+              <div className={`flex flex-col justify-center items-center gap-1 ${opacity ? '' : 'invisible'}`}  ref={boxOfBoxes}>
+                {
+                  sections.map(item => (
+                    <div className={`h-32 w-[70%] mx-auto  ${bgState ? item.bg : item.bg2} relative`} key={item.value}>
+                    </div >
+                  ))
+                }
+              </div>
+            </Atropos>
           </div>
         </div>
-        <div className='h-[80vh] bg-green-100 w-full'>
+        <div className='h-[80vh] w-full'>
 
       </div>
       </div>
