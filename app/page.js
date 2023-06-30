@@ -17,8 +17,6 @@ const sections = [
 
 export default function Home() {
 
-  
-  const container = useRef(null)
   gsap.registerPlugin(ScrollTrigger)
 
   useEffect(() => {
@@ -96,12 +94,7 @@ export default function Home() {
         end: 'bottom center',
         scrub:1,
         markers:true,
-        
-        // onUpdate: (self) => {
-        //   if (self.direction === 1) {
-        //     gsap.set('.box', { opacity: 0 })
-        //   };
-        // },
+
       })
 
     })
@@ -126,11 +119,11 @@ While there are no rules when it comes to makeup, the Vertical Gradient Method i
 
 The Vertical Gradient Method is basically dividing the lid horizontally, most commonly into 3 sections and with the darkest color placed nearest to the eyelashes.
         </div>
-        <div className='generalContainer relative h-[1500px] w-full'>
+        <div className='generalContainer  relative h-[1500px] w-full'>
           <div className='absolute h-full w-full flex flex-col gap-5'>
             {
               sections.map(item => (
-                <div className={`h-32 w-full ${item.bg} box relative bg-eyes bg-no-repeat bg-cover bg-[center_top_-200px]`} key={item.value}>
+                <div className={`h-32 w-[70%] mx-auto ${item.bg} box relative bg-eyes bg-no-repeat bg-cover bg-[center_top_-200px]`} key={item.value}>
                 </div >
               ))
             }
@@ -138,7 +131,7 @@ The Vertical Gradient Method is basically dividing the lid horizontally, most co
           <div className='absolute h-full w-full flex flex-col gap-5'>
             {
               sections.map(item => (
-                <div className={`h-32 w-full ${item.bg2} box2 relative bg-eyes`} key={item.value}>
+                <div className={`h-32 w-[70%] mx-auto ${item.bg2} box2 relative bg-eyes`} key={item.value}>
                 </div>
               ))
             }
