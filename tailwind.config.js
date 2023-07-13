@@ -8,7 +8,12 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'eyes': 'url("https://www.gamephd.com/wp-content/uploads/plixpapers1607/blue-eyes-face-4k-wallpaper-770x472.jpg")',
+        'eyes-1': "url('/images/eyesone.png')",
+        'eyes-2': "url('/images/eyes_tow.png')",
+        'eyes-3': "url('/images/eyes_three.png')",
+        'eyes-4': "url('/images/eyes_four.png')",
+        'eyes-5': "url('/images/eyes_five.png')",
+        'eyes-6': "url('/images/eyes_six.png')",
       },
     },
   },

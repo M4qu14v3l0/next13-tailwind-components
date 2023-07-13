@@ -2,3 +2,49 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+  overflow-y: visible;
+  position: relative;
+}
+
+@layer utilities{
+  .color-change-5x {
+    -webkit-animation: color-change-5x 8s linear infinite alternate both;
+            animation: color-change-5x 8s linear infinite alternate both;
+  }
+  @-webkit-keyframes color-change-5x {
+    0% {
+      background: #1de9b6;
+    }
+    25% {
+      background: #311b92;
+    }
+    50% {
+      background: #5e35b1;
+    }
+    75% {
+      background:#d500f9;
+    }
+    100% {
+      background: #c51162;
+    }
+  }
+  @keyframes color-change-5x {
+    0% {
+      background: #19dcea;
+    }
+    25% {
+      background: #b22cff;
+    }
+    50% {
+      background: #ea2222;
+    }
+    75% {
+      background: #d500f9;
+    }
+    100% {
+      background: #69f0ae;
+    }
+  }
+}
