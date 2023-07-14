@@ -9,10 +9,20 @@ body{
 }
 
 @layer utilities{
+
+  .scale-on-hover{
+    transition: all .2s ease-in-out ;
+  }
+
+  .scale-on-hover:hover {
+    transform: scale(1.1);
+  }
+
   .color-change-5x {
     -webkit-animation: color-change-5x 8s linear infinite alternate both;
-            animation: color-change-5x 8s linear infinite alternate both;
+    animation: color-change-5x 8s linear infinite alternate both;
   }
+
   @-webkit-keyframes color-change-5x {
     0% {
       background: #1de9b6;
