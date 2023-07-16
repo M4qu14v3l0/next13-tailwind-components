@@ -1,3 +1,4 @@
+import Navbar from './components/navbar/Navbar'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -11,7 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-black`} >{children}</body>
+      <body className={`${inter.className} bg-black text-white`} >
+        <Navbar />  
+        {children}
+      </body>
     </html>
   )
 }
