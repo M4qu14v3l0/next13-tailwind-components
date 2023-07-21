@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   const picturesScroll = () => {
-    const index = Math.floor(scrollY / 8) % manImages.length; // 100 / 10  = 1 % 200 = 1
+    const index = Math.floor(scrollY / 10) % manImages.length; // 100 / 10  = 1 % 200 = 1
     console.log(index , scrollY);
     return manImages[index];
   }
