@@ -6,6 +6,7 @@ export default function Navbar() {
       <nav>
         <li>
           <Link href="/cardsComponent"> Cards Component </Link>
+          <Link href="/canvasAnimation"> Canvas Animation </Link>
         </li>
       </nav>
     </header>
